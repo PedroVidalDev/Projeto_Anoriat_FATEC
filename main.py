@@ -343,7 +343,7 @@ while True:
                 else:
                     if user_removed == 0:
                         print(f"\n{prin}Voltando ao menu inicial...")
-                    elif user_removed == 7:
+                    elif user_removed == 1:
                         print(f"\n{prin}Não é possível excluir a conta de ADM.")
                     else:
                         functions.account_remove(user_removed)
