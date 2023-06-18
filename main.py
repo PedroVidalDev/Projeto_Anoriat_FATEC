@@ -43,6 +43,7 @@ while True:
             [Q] Atualizar estoque
             [T] Temas Personalizados
             [L] Logoff
+            [U] Excluir conta
             [S] Sair do programa
             ''') 
         
@@ -200,7 +201,7 @@ while True:
                             try: 
                                 esc2 = int(input("Digite a opcao desejada:\033[1;32m "))
                             except:
-                                print(f"{prin}\033[1;32m Opção inválida")
+                                print(f"{prin}\033[1;31m Opção inválida")
                             if esc2 == 1:
                                 print("...")
                                 
@@ -215,7 +216,7 @@ while True:
                     else:
                         print("...")
                 else:
-                    print("Voce não tem permissão para tal função..")
+                    print(f"\033[1;31m\nVoce não tem permissão para tal função...{prin}")
                     break
 
 # ALTERAR QUANTIDADE DE PRODUTO   
@@ -240,7 +241,7 @@ while True:
                         print(f"{prin}{res}")
                         break
                 else:
-                    print(f"{prin}Voce não tem permissão para tal função..")
+                    print(f"\033[1;31mVoce não tem permissão para tal função.. {prin}")
     
 # CASO O ADM QUEIRA RETIRAR PRODUTOS #
         case "X":
@@ -274,13 +275,13 @@ while True:
                             
                             functions.product_remove(product_removed)
 
-                            print("Produto deletado com sucesso!")
+                            print(f"\033[1;32mProduto deletado com sucesso!{prin}")
                             break
 
                     else:
                         print("...")
                 else:
-                    print("Voce nao tem permissao para tal funcao..")
+                    print(f"\033[1;31mVoce nao tem permissao para tal funcao...{prin}")
                     break
                     
 # CASO O ADM QUERIA MUDAR O LAYOUT DO SITE #
@@ -325,6 +326,31 @@ while True:
         case "L": 
             print(f'\n \033[1;33m'+'Realizando logoff...'+'\n')
             logged = False
+        
+        case "U":
+            if logged == True and user[0] == 1:
+                users = functions.list_user()
+                for i in range(len(users)):
+                    print(f"{prin}ID: \033[1;32m {users[i][0]}")
+                    print(f"{prin}Nome: \033[1;32m {users[i][1]}")
+                    print(f"{prin}Email: \033[1;32mR$ {users[i][2]}")
+                    print(f"{prin}=-"*20)
+
+                try:
+                    user_removed = int(input(f"Digite o ID da conta que deseja excluir ou digite 0 para cancelar a operação:\033[32m "))
+                except:
+                    print(f"\n\033[1;31mValor inserido invalido...{prin}")
+                else:
+                    if user_removed == 0:
+                        print(f"\n{prin}Voltando ao menu inicial...")
+                    elif user_removed == 7:
+                        print(f"\n{prin}Não é possível excluir a conta de ADM.")
+                    else:
+                        functions.account_remove(user_removed)
+                        print(f"\n{prin}Usuario excluído com sucesso.")
+                
+            else:
+                print(f"\n\033[1;31mVocê não tem permissão.{prin}")
 
 # CASO O USUARIO QUEIRA SAIR #
         case "S":
