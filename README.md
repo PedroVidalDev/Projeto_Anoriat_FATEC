@@ -5,11 +5,11 @@ Projeto de fim de semestre para a FATEC, utilizando conceitos básicos da lingua
 com o objetivo de auxiliar um microempreendedor a controlar seu estoque de produtos.
 
 ## Ferramentas utilizadas
-Python
-SQLite
+- Python
+- SQLite
 
 ## Bibliotecas utilizadas
-datetime
-sqlite3
-pytz
-time
+- datetime
+- sqlite3
+- pytz
+- time
