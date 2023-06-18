@@ -74,6 +74,24 @@ def layout(name, color):
     conn.close()
     return
 
+def list_user():
+    conn = sqlite3.connect("Anoriat.db")
+    cursor = conn.cursor()
+    cursor.execute("select * from users")
+    users = cursor.fetchall()
+    cursor.close()
+    conn.close()
+    return users
+
+def account_remove(id):
+    conn = sqlite3.connect("Anoriat.db")
+    cursor = conn.cursor()
+    cursor.execute("delete from users where id = '{}'".format(id))
+    conn.commit()
+    cursor.close()
+    conn.close()
+    return
+
 def color():
     conn = sqlite3.connect("Anoriat.db")
     cursor = conn.cursor()
